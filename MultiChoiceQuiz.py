@@ -10,11 +10,18 @@ class Multi:
         self.select.set(0)
         ans = ['Purple', 'Blue', 'Orange','Green']
         for item in ans:
-            Radiobutton(text=item,value=item,variable=self.select).grid(padx=10)
-        
-        
+            userinput=Radiobutton(text=item,value=item,variable=self.select, command=self.check)
+            userinput.grid()
+        self.text=Label(parent,text="")
+        self.text.grid()
 
-        
+    def check(self):
+        if self.select.get() == "Orange":
+            self.text.configure(text="correct")
+            self.text.grid()
+        else:
+            self.text.configure(text="incorrect")
+            self.text.grid()
 
 
 if __name__ == "__main__":        
