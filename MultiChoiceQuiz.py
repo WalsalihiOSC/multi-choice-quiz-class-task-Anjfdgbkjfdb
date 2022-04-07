@@ -3,24 +3,30 @@ from tkinter import*
 
 class Multi:
     def __init__(self, parent):
+        data.setup(self)
 
         Label(parent,text="Q1. What colour does yellow and red make?").grid(row=1,column=1,columnspan=3)
-        self.select=StringVar()
-        self.select.set(0)
-        ans = ['Purple', 'Blue', 'Orange','Green']
-        for item in ans:
-            userinput=Radiobutton(text=item,value=item,variable=self.select, width=25,command=self.check)
+        for item in data.ans:
+            userinput=Radiobutton(text=item,value=item,variable = data.select, width=25,command=data.check)
             userinput.grid(column=2)
-        self.text=Label(parent,text="")
-        self.text.grid(row=6,column=2)
+        Multi.text=Label(parent,text="")
+        Multi.text.grid(row=6,column=2)
 
-    def check(self):
-        if self.select.get() == "Orange":
-            self.text.configure(text="Correct")
-            self.text.grid()
+
+class data:
+    def setup(self):
+        data.ans = ['Purple', 'Blue', 'Orange','Green']
+        data.select=StringVar()
+        data.select.set(0)
+
+
+    def check():
+        if data.select.get() == "Orange":
+            Multi.text.configure(text="Correct")
+            Multi.text.grid()
         else:
-            self.text.configure(text="Incorrect")
-            self.text.grid()
+            Multi.text.configure(text="Incorrect")
+            Multi.text.grid()
 
 
 root = Tk()
